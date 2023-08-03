@@ -2,74 +2,74 @@
 
 /**
  * binary_trees_ancestor - finds the lowest common ancestor of two nodes
- * @first: pointer to first node
- * @second: pointer to the second node
- * Return: pointer to the lowest common ancestor node
+ * @first: points to first node
+ * @second: points to the second node
+ * Return: points to the lowest common ancestor node
  * of the two given nodes or null
  */
 
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 									 const binary_tree_t *second)
 {
-	binary_tree_t *low, *high;
-	size_t fd, sd;
-	int dif, i = 0;
+	binary_tree_t *l, *h;
+	size_t fid, sid;
+	int diff, i = 0;
 
 	if (first == NULL || second == NULL)
 		return (NULL);
 
-	fd = binary_tree_depth(first);
-	sd = binary_tree_depth(second);
+	fid = binary_tree_depth(first);
+	sid = binary_tree_depth(second);
 
-	dif = (int)fd - (int)sd;
-	if (dif >= 0)
+	diff = (int)fid - (int)sid;
+	if (diff >= 0)
 	{
-		low = (binary_tree_t *)first;
-		high = (binary_tree_t *)second;
-	} else if (dif < 0)
+		l = (binary_tree_t *)first;
+		h = (binary_tree_t *)second;
+	} else if (diff < 0)
 	{
-		low = (binary_tree_t *)second;
-		high = (binary_tree_t *)first;
-		dif *= -1;
+		l = (binary_tree_t *)second;
+		h = (binary_tree_t *)first;
+		diff *= -1;
 	}
 
-	while (i < dif)
+	while (i < diff)
 	{
-		low = low->parent;
+		l = l->parent;
 		++i;
 	}
 
-	while (high != NULL && low != NULL)
+	while (h != NULL && l != NULL)
 	{
-		if (high->n == low->n)
-			return (high);
-		high = high->parent;
-		low = low->parent;
+		if (h->n == l->n)
+			return (h);
+		h = h->parent;
+		l = l->parent;
 	}
 	return (NULL);
 }
 
 /**
-* binary_tree_depth - function that calculates the height of a node in a tree
+* binary_tree_depth - this function that calculates the height of a node in a tree
 *
 * @tree: the node
 * Return: The depth of the node
 */
 size_t binary_tree_depth(const binary_tree_t *tree)
 {
-	int dl = 0, dr = 0;
+	int dleft = 0, dright = 0;
 
 	if (tree == NULL)
 	return (0);
 
 	if (tree->parent)
 	{
-		dl = binary_tree_depth(tree->parent) + 1;
-		dr = binary_tree_depth(tree->parent) + 1;
+		dleft = binary_tree_depth(tree->parent) + 1;
+		dright = binary_tree_depth(tree->parent) + 1;
 	}
 
-	if (dl > dr)
-		return (dl);
+	if (dleft > dright)
+		return (dleft);
 	else
-		return (dr);
+		return (dright);
 }

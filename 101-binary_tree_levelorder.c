@@ -1,10 +1,10 @@
 #include "binary_trees.h"
 
 /**
- * visitCurrentLevel - calls ths func on each node on a level
- * @root: pointer to the node in the level to call the function in it's nodes
- * @level: level targeted
- * @func: pointer to the function to call on each node
+ * visitCurrentLevel - this calls ths func on each node on a level
+ * @root: points to the node in the level to call the function in it's nodes
+ * @level: the level targeted
+ * @func: points to the function to call on each node
  * Return: void
  */
 void visitCurrentLevel(binary_tree_t *root, int level, void (*func)(int))
@@ -21,26 +21,26 @@ void visitCurrentLevel(binary_tree_t *root, int level, void (*func)(int))
 }
 
 /**
- * visitLevelOrder - travers tree using level order traversal
- * @root: root node in the level to travers
+ * visitLevelOrder - goes through tree using level order traversal
+ * @root: root node in the level to traverse
  * @func: function to call on each node
  * Return: Void
  */
 
 void visitLevelOrder(binary_tree_t *root, void (*func)(int))
 {
-	int h = binary_tree_height(root) + 1;
+	int high = binary_tree_height(root) + 1;
 	int i;
 
-	for (i = 1; i <= h; i++)
+	for (i = 1; i <= high; i++)
 		visitCurrentLevel(root, i, func);
 }
 
 /**
  * binary_tree_levelorder - goes through a binary tree
  * using level-order traversal
- * @tree: pointer to the root node of the tree
- * @func: pointer to a function to call for each node
+ * @tree: points to the root node of the tree
+ * @func: points to a function to call for each node
  * Return: void
  */
 
@@ -52,41 +52,41 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 }
 
 /**
- * binary_tree_height - measures the height of a binary tree
- * @tree: pointer to the root node of the tree
+ * binary_tree_height - this measures the height of a binary tree
+ * @tree: points to the root node of the tree
  * Return: the size or 0 if tree is null
  */
 
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	int counter;
+	int number;
 
 	if (tree == NULL)
 		return (0);
 
-	counter = tree_height(tree);
+	number = tree_height(tree);
 
-	return ((size_t)counter);
+	return ((size_t)number);
 }
 
 /**
- * tree_height - count node tree height
+ * tree_height - this count node tree height
  * @node: node to measure
  * Return: height
  */
 
 int tree_height(const binary_tree_t *node)
 {
-	int lDepth, rDepth;
+	int leftD, rightD;
 
 	if (node == NULL)
 		return (-1);
 
-	lDepth = tree_height(node->left);
-	rDepth = tree_height(node->right);
+	leftD = tree_height(node->left);
+	rightD = tree_height(node->right);
 
-	if (lDepth > rDepth)
-		return (lDepth + 1);
+	if (leftD > rightD)
+		return (leftD + 1);
 	else
-		return (rDepth + 1);
+		return (rightD + 1);
 }
