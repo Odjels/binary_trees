@@ -70,7 +70,7 @@ void swap(heap_t **arg_node, heap_t **arg_child)
 		if (node->left == child)
 			node_child = node->right, lef_rit = 0;
 		else
-			node_child = node->left, left_right = 1;
+			node_child = node->left, lef_rit = 1;
 		node_left = child->left, node_right = child->right;
 		if (lef_rit == 0)
 		{
