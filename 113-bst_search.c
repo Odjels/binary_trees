@@ -1,11 +1,11 @@
 #include "binary_trees.h"
 
 /**
-* bst_search - a function that searches for a node
+* bst_search - the function that searches for a node
 *
-* @tree: the tree's root
-* @value: the value to match
-* Return: The node containing @value
+* @tree: tree root
+* @value: value to match
+* Return: The node containing the value
 */
 bst_t *bst_search(const bst_t *tree, int value)
 {

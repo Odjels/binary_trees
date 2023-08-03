@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
-* bst_insert - a function that inserts a new node in search tree
+* bst_insert - the function that inserts a new node in search tree
 * @tree: The root node
 * @value: new node's value
 * Return: The new node
@@ -9,18 +9,18 @@
 
 bst_t *bst_insert(bst_t **tree, int value)
 {
-	int duplicate = 0;
-	bst_t *new;
+	int dupl = 0;
+	bst_t *now;
 
 	if (tree == NULL)
 		return (NULL);
-	duplicate = bs_tree_preorder((*tree), value);
-	if (duplicate == 0)
+	dupl = bs_tree_preorder((*tree), value);
+	if (dupl == 0)
 		return (NULL);
 	if ((*tree) == NULL)
 	{
-		(*tree) = new = binary_tree_node((*tree), value);
-		return (new);
+		(*tree) = now = binary_tree_node((*tree), value);
+		return (now);
 	}
 	if (value == (*tree)->n)
 		return (NULL);
@@ -28,22 +28,22 @@ bst_t *bst_insert(bst_t **tree, int value)
 	{
 		if ((*tree)->left == NULL)
 		{
-			new = (*tree)->left = binary_tree_node((*tree), value);
-			return (new);
+			now = (*tree)->left = binary_tree_node((*tree), value);
+			return (now);
 		}
-		new = bst_insert(&(*tree)->left, value);
-		return (new);
+		now = bst_insert(&(*tree)->left, value);
+		return (now);
 	}
 	else if (value > (*tree)->n)
 	{
 		if ((*tree)->right == NULL)
 		{
-			new = binary_tree_node((*tree), value);
-			(*tree)->right = new;
-			return (new);
+			now = binary_tree_node((*tree), value);
+			(*tree)->right = now;
+			return (now);
 		}
-		new = bst_insert(&(*tree)->right, value);
-		return (new);
+		now = bst_insert(&(*tree)->right, value);
+		return (now);
 	}
 	if ((*tree) == NULL)
 		return (NULL);
@@ -51,16 +51,16 @@ bst_t *bst_insert(bst_t **tree, int value)
 }
 
 /**
- * bs_tree_preorder - goes through a binary tree
+ * bs_tree_preorder - through a binary tree
  * using pre-order traversal to find duplicate
- * @tree: pointer to the root node
- * @n: value to check for
+ * @tree: points to the root node
+ * @n: the value to check for
  * Return: 0 for true or 1 for false
  */
 
 int bs_tree_preorder(bst_t *tree, int n)
 {
-	int leftr, rightr;
+	int lef, rit;
 
 	if (tree == NULL)
 		return (1);
@@ -68,7 +68,7 @@ int bs_tree_preorder(bst_t *tree, int n)
 	if (tree->n == n)
 		return (0);
 
-	leftr = bs_tree_preorder(tree->left, n);
-	rightr = bs_tree_preorder(tree->right, n);
-	return (leftr * rightr);
+	lef = bs_tree_preorder(tree->left, n);
+	rit = bs_tree_preorder(tree->right, n);
+	return (lef * rit);
 }

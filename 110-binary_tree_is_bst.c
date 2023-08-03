@@ -1,8 +1,8 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_is_bst - checks if a binary tree is a valid Binary Search Tree
- * @tree: pointer to the tree tree of the tree
+ * binary_tree_is_bst - this checks if a binary tree is a valid Binary Search Tree
+ * @tree: points to the tree tree of the tree
  * Return: 1 if true or 0 otherwise
  */
 
@@ -15,7 +15,7 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 }
 
 /**
- * isValid - checks it bt is bst
+ * isValid - this checks it bt is bst
  * @root: root node
  * Return: 1 or 0
  */
@@ -30,10 +30,10 @@ int isValid(binary_tree_t *root)
 }
 
 /**
- * inorder - helper function for isValid
- * @root: pointer to node
+ * inorder - helps the function for isValid
+ * @root: points to node
  * @prev: array of prev pointers to nodes
- * @isvalid: array of numbers
+ * @isvalid: array of the numbers
  * Return: 1 or 0
  */
 
